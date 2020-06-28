@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <h1>Search for national parks by state and # of max results desired!</h1>
+      <form>
+        <input type="text" placeholder="Enter park here" class="park">
+        <input type="text" placeholder="2 letter abbreviation for state" class="state">
+        <input type="number" placeholder="# of max results" value="10" class="maxResults">
+        <input type="submit" value="Submit!">
+      </form>
+      <section id="results" class="hidden">
+          <h2>Search results</h2>
+          <ul id="results-list">
+          </ul>
+        </section>
+      <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
