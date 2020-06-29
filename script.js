@@ -1,3 +1,4 @@
+`use strict`
 function getPark(park, state, maxResults) {
     let baseUrl="https://developer.nps.gov/api/v1/parks/";
     let apiKey="gpMC22DNtiQuAt9uouzWqHrRBMwRvrAriqCQkNio"
@@ -6,12 +7,7 @@ function getPark(park, state, maxResults) {
       stateCode: state,
       limit: maxResults
     }
-    function formatParams(params) {
-    const formattedParams=Object.keys(params)
-    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
-    return formattedParams.join("&");
-  
-  }
+
     const queryString=formatParams(params);
     const url=baseUrl+"?"+queryString+"&api_key=" + apiKey;
     console.log(url);
@@ -21,7 +17,16 @@ function getPark(park, state, maxResults) {
       return response.json();
       
     })
-    .then(responseJson => displayResults(responseJson));
+    .then(responseJson => displayResults(responseJson))
+    .catch(err => {
+      $('#js-error-message').text(`Something went wrong: ${err.message}`);
+  })};
+
+  function formatParams(params) {
+    const formattedParams=Object.keys(params)
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
+    return formattedParams.join("&");
+  
   }
   
   function watchForm(){
@@ -62,4 +67,4 @@ function getPark(park, state, maxResults) {
   $(function() {
     console.log('App loaded! Waiting for submit!');
     watchForm();
-  });
+  })
